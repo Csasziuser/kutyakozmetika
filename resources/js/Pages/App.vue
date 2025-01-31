@@ -42,8 +42,15 @@ export default {
 
     },
 
-    delete_foglalas(foglalasData) {
-      this.foglalasok[foglalasData.date][foglalasData.time] = false;
+    delete_foglalas(id) {
+      fetch("/api/foglalas/"+id, { 
+        method: "DELETE",
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),'Content-Type': 'application/json'
+        }
+      })
+            .then(this.isVisible = !this.isVisible,this.getfoglalasok())
+            .catch(error => console.log(error));
     }
   }
 }

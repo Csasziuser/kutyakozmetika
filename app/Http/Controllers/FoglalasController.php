@@ -28,4 +28,9 @@ class FoglalasController extends Controller
 
         return response()->json("K", 200);
     }
+
+    function destroy($id){
+        $foglalas=Foglalasok::find($id);
+        $foglalas->delete();
+    }
 }
