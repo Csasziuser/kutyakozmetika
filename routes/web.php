@@ -25,6 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/api/foglalas/{$datum}', [FoglalasController::class, 'getFoglalas'])->name('foglalas.getFoglalas');
+Route::get('/api/foglalas/{datum}', [FoglalasController::class, 'getFoglalas'])->name('foglalas.getFoglalas');
 
 require __DIR__.'/auth.php';

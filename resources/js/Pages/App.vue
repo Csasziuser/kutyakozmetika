@@ -12,6 +12,7 @@
       return{
         input: {},
         foglalasok: {},
+        isVisible: false
       }
     },
 
@@ -24,7 +25,7 @@
         this.isVisible = !this.isVisible
         fetch('/api/foglalas/'+this.input.date)
                 .then(response => response.json())
-                .then(data => console.log(data))
+                .then(data => {this.foglalasok = data; console.log(this.foglalasok)})
                 .catch(error => console.error(error));
       }
       ,
@@ -62,7 +63,7 @@
           <Input @inputChange="inputChange"></Input>
 
           <button class="btn btn-primary" @click=" getfoglalasok()">Időpontok megtekintése</button>
-          <List :input="input" :foglalasok="foglalasok" @foglalas="foglalas" @delete_foglalas="delete_foglalas"></List>
+          <List :input="input" :foglalasok="foglalasok" @foglalas="foglalas" @delete_foglalas="delete_foglalas" :isVisible="isVisible"></List>
         </div>
       </div>
     </div>
