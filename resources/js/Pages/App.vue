@@ -19,6 +19,15 @@
       inputChange(newValue){
         this.input = newValue;
       },
+      getfoglalasok()
+      {
+        this.isVisible = !this.isVisible
+        fetch('/api/foglalas/'+this.input.date)
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+      }
+      ,
 
       foglalas(foglalasData){
         if (foglalasData.name != undefined && foglalasData.date != undefined){
@@ -51,6 +60,8 @@
           <h1 class="mb-3">Kutyakozmetikus Foglalás</h1>
 
           <Input @inputChange="inputChange"></Input>
+
+          <button class="btn btn-primary" @click=" getfoglalasok()">Időpontok megtekintése</button>
           <List :input="input" :foglalasok="foglalasok" @foglalas="foglalas" @delete_foglalas="delete_foglalas"></List>
         </div>
       </div>

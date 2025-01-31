@@ -33,7 +33,7 @@
 </script>
 
 <template>
-    <button class="btn btn-primary" @click="isVisible = !isVisible">Időpontok megtekintése</button>
+    
 
     <div class="card p-3 mt-3" v-if="isVisible">
         <template v-for="(idopont, index) in idopontok">
