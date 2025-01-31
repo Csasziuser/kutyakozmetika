@@ -8,10 +8,10 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('App', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        // 'canLogin' => Route::has('login'),
+        // 'canRegister' => Route::has('register'),
+        // 'laravelVersion' => Application::VERSION,
+        // 'phpVersion' => PHP_VERSION,
     ]);
 });
 
@@ -26,5 +26,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/api/foglalas/{datum}', [FoglalasController::class, 'getFoglalas'])->name('foglalas.getFoglalas');
+Route::post('/api/foglalas/', [FoglalasController::class, 'store'])->name('foglalas.store');
 
 require __DIR__.'/auth.php';
